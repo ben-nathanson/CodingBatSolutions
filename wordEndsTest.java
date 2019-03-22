@@ -57,7 +57,7 @@ public class wordEndsTest {
         e.printStackTrace(System.out);
         System.out.println("Text:   " + text);
         System.out.println("Needle: " + needle);
-        System.out.println("Errcount: " + String.valueOf(errorCount));
+        System.out.println("Error count: " + String.valueOf(errorCount));
       }
     }
   }
@@ -68,7 +68,7 @@ public class wordEndsTest {
     int index = text.indexOf(needle);
     // Special case 1:
     // If the needle does not occur in the text:
-    if (index == -1) return "";
+    if (index < 0) return "";
     // Special case 2:
     // The text is the needle. Thus there cannot be neighboring letters
     if (text.equals(needle)) return "";
@@ -76,7 +76,7 @@ public class wordEndsTest {
     String output = "";
     // get the first left neighbor of the first instance of the needle
     // there is no neighbor at the index -1 so we skip if index <= 0
-    if (index > 0) output += text.charAt(index- 1);
+    if (index > 0) output += text.charAt(index - 1);
     // get the first right neighbor of the first instance of the needle
     int rightNeighbor = index + needleLength;
     if ((rightNeighbor < textLength) && (rightNeighbor > -1)) {
@@ -89,7 +89,7 @@ public class wordEndsTest {
       rightNeighbor = index + needleLength;
       if ((rightNeighbor < textLength)  && (rightNeighbor > -1)) output += text.charAt(rightNeighbor);
       index = text.indexOf(needle, index + 1);
-    } while(index < textLength && index > -1);
+    } while(index < textLength && index > - 1);
     return output;
   }
 
